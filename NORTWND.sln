@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NORTWND.API", "NORTWND.API\NORTWND.API.csproj", "{EB6619B2-E449-4E4B-824A-65842C7304A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NORTWND.BLL", "NORTWND.BLL\NORTWND.BLL.csproj", "{E00BE7E0-7341-4C03-B492-33DDAAE57DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NORTWND.DAL", "NORTWND.DAL\NORTWND.DAL.csproj", "{97E216E7-5417-436F-A283-C3296BC95231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NORTWND.Core", "NORTWND.Core\NORTWND.Core.csproj", "{A4B872BE-8667-4318-BF4A-357BA1E7EEC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB6619B2-E449-4E4B-824A-65842C7304A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6619B2-E449-4E4B-824A-65842C7304A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6619B2-E449-4E4B-824A-65842C7304A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6619B2-E449-4E4B-824A-65842C7304A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00BE7E0-7341-4C03-B492-33DDAAE57DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00BE7E0-7341-4C03-B492-33DDAAE57DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00BE7E0-7341-4C03-B492-33DDAAE57DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00BE7E0-7341-4C03-B492-33DDAAE57DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E216E7-5417-436F-A283-C3296BC95231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E216E7-5417-436F-A283-C3296BC95231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E216E7-5417-436F-A283-C3296BC95231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E216E7-5417-436F-A283-C3296BC95231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B872BE-8667-4318-BF4A-357BA1E7EEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B872BE-8667-4318-BF4A-357BA1E7EEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B872BE-8667-4318-BF4A-357BA1E7EEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B872BE-8667-4318-BF4A-357BA1E7EEC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39BB7146-954E-4A03-8D4C-05BA9C2284B0}
+	EndGlobalSection
+EndGlobal
