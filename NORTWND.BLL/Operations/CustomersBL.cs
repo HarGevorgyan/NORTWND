@@ -1,5 +1,6 @@
 ﻿using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
+using NORTWND.Core.Exceptions;
 using NORTWND.Core.Models;
 using NORTWND.DAL.BigOperations;
 using System;
@@ -55,7 +56,8 @@ namespace NORTWND.BLL.Operations
 
         public async Task EditCustomerAsync(string customerId, CustomerEditModel model)
         {
-            var customer = await _repositories.Customers.GetAsync(customerId);
+            var customer = await _repositories.Customers.GetAsync(customerId)??
+                throw new LogicException("Wrong CustomerId");
 
             customer.ContactName = string.IsNullOrEmpty(model.ContactName)?customer.ContactName: model.ContactName;
             customer.ContactTitle = string.IsNullOrEmpty(model.ContactTitle) ? customer.ContactTitle : model.ContactTitle;
@@ -78,7 +80,8 @@ namespace NORTWND.BLL.Operations
 
         public async Task<IEnumerable<CustomerViewModel>> GetCustomersAsync(CustomerFilterModel filter)
         {
-            var customers = await _repositories.Customers.GetFilteredCustomer(filter);
+            var customers = await _repositories.Customers.GetFilteredCustomer(filter)??
+                throw new LogicException("Wrong Customer ID or CompanyName");
             return customers;
         }
 
@@ -98,7 +101,8 @@ namespace NORTWND.BLL.Operations
 
         public async Task RemoveCustomerAsync(string customerId)
         {
-            var customer = await _repositories.Customers.GetAsync(customerId);
+            var customer = await _repositories.Customers.GetAsync(customerId)??
+                throw new LogicException("Wrong Customer Id");
 
             _repositories.Customers.Remove(customer);
 

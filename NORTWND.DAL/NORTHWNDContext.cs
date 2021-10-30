@@ -19,7 +19,7 @@ namespace NORTWND.DAL
             : base(options)
         {
         }
-
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s { get; set; }
