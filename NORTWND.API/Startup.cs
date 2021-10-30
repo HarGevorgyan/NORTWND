@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
 using NORTWND.DAL;
 using NORTWND.DAL.Repositories;
+using System.Threading.Tasks;
 
 namespace NORTWND.API
 
@@ -26,7 +28,7 @@ namespace NORTWND.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<NORTHWNDContext>(x => 
+            services.AddDbContext<NORTHWNDContext>(x =>
             {
                 x.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
@@ -35,13 +37,21 @@ namespace NORTWND.API
             services.AddScoped<ICustomersBL, CustomersBL>();
             services.AddScoped<IProductsBL, ProductsBL>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
-           
+            services.AddScoped<IAuthBL,AuthBL>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NORTWND", Version = "v1" });
             });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.Events.OnRedirectToLogin = (context) => { context.Response.StatusCode = 401; return Task.CompletedTask; };
+                    options.Events.OnRedirectToLogout = (context) => { context.Response.StatusCode = 401; return Task.CompletedTask; };
+                    options.Events.OnRedirectToAccessDenied = (context) => { context.Response.StatusCode = 403; return Task.CompletedTask; };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

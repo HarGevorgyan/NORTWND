@@ -18,6 +18,8 @@ namespace NORTWND.DAL.Repositories
 
         private ICustomerRepository _customers;
         public ICustomerRepository Customers => _customers ??= new CustomerRepository(_context);
+        private IUserRepository _users;
+        public IUserRepository Users => _users ??= new UserRepository(_context);
 
         public void Save()
         {

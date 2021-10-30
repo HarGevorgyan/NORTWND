@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NORTWND.API.Entities;
 using NORTWND.Core.Abstractions.Repositories;
@@ -30,6 +31,7 @@ namespace NORTWND.API.Controllers
             return (response!= null) ? Ok(response) : NoContent();
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetCustomerAsync([FromQuery] CustomerFilterModel filter)
         {
            var response = await _customers.GetCustomersAsync(filter);
@@ -38,7 +40,7 @@ namespace NORTWND.API.Controllers
         }
 
         [HttpPost]
-
+        [Authorize]
         public async Task<IActionResult> AddCustomerAsync([FromBody] CustomerAddModel customer)
         {
             var response = await _customers.AddCustomerAsync(customer);
@@ -47,7 +49,8 @@ namespace NORTWND.API.Controllers
         }
 
         [HttpPut("{id}")]
-
+        [Authorize(Roles = "Moderator")]
+        
         public async Task<IActionResult>  EditCustomerAsync([FromRoute] string id,[FromBody] CustomerEditModel model)
         {
             await _customers.EditCustomerAsync(id,model);
@@ -55,7 +58,7 @@ namespace NORTWND.API.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveCustomerAsync([FromRoute] string id)
         {
             await _customers.RemoveCustomerAsync(id);
