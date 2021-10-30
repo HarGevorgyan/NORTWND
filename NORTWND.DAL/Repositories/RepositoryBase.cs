@@ -24,7 +24,7 @@ namespace NORTWND.DAL.Repositories
             return entity;
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(string id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
@@ -58,5 +58,7 @@ namespace NORTWND.DAL.Repositories
         {
             return _context.Set<T>().Where(predicate).ToList();
         }
+
+        
     }
 }

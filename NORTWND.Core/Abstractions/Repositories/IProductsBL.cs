@@ -9,7 +9,7 @@ namespace NORTWND.Core.Abstractions.Repositories
 {
     public interface IProductsBL
     {
-        Task<IEnumerable<ProductsViewModel>> NeedReordering();
-        Task<IEnumerable<ProductsViewModel>> NeedReorderingContinued();
+        Task<IEnumerable<ProductViewModel>> NeedReordering();
+        Task<IEnumerable<ProductViewModel>> NeedReorderingContinued();
     }
 }

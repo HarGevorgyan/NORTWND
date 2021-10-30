@@ -9,6 +9,7 @@ using NORTWND.BLL.Operations;
 using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
 using NORTWND.DAL;
+using NORTWND.DAL.Repositories;
 
 namespace NORTWND.API
 
@@ -32,7 +33,8 @@ namespace NORTWND.API
 
             services.AddScoped<IOrdersBL, OrdersBL>();
             services.AddScoped<ICustomersBL, CustomersBL>();
-            services.AddScoped<IProductsBL, ProductsBL>();  
+            services.AddScoped<IProductsBL, ProductsBL>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
            
 
             services.AddControllers();

@@ -13,11 +13,11 @@ namespace NORTWND.DAL.BigOperations
     public class BigProducts : IProductsBL
     {
         NORTHWNDContext _db = new NORTHWNDContext();
-        public async Task<IEnumerable<ProductsViewModel>> NeedReordering()
+        public async Task<IEnumerable<ProductViewModel>> NeedReordering()
         {
             var response = await _db.Products.Where(p => p.UnitsOnOrder < p.ReorderLevel).OrderBy(p => p.ProductId).ToListAsync();
 
-            return response.Select(x => new ProductsViewModel
+            return response.Select(x => new ProductViewModel
             {
                 ProductId = x.ProductId,
                 ProductName = x.ProductName,
@@ -29,13 +29,13 @@ namespace NORTWND.DAL.BigOperations
             });
         }
 
-        public async Task<IEnumerable<ProductsViewModel>> NeedReorderingContinued()
+        public async Task<IEnumerable<ProductViewModel>> NeedReorderingContinued()
         {
             var response = await _db.Products
                             .Where(p => (p.UnitsOnOrder + p.UnitsInStock) <= p.ReorderLevel && p.Discontinued == false)
                             .OrderBy(p => p.ProductId).ToListAsync();
 
-            return response.Select(x => new ProductsViewModel
+            return response.Select(x => new ProductViewModel
             {
                 ProductId = x.ProductId,
                 ProductName = x.ProductName,

@@ -13,12 +13,12 @@ namespace NORTWND.BLL.Operations
     public class ProductsBL : IProductsBL
     {
         private BigProducts products = new BigProducts();
-        public Task<IEnumerable<ProductsViewModel>> NeedReordering()
+        public Task<IEnumerable<ProductViewModel>> NeedReordering()
         {
             return products.NeedReordering();
         }
 
-        public Task<IEnumerable<ProductsViewModel>> NeedReorderingContinued()
+        public Task<IEnumerable<ProductViewModel>> NeedReorderingContinued()
         {
             return products.NeedReorderingContinued();
         }

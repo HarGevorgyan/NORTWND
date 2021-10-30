@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NORTWND.Core.Models
 {
-    public class ProductsViewModel
+    public class ProductViewModel
     {
          public int ProductId {  get; set; }
         public string ProductName {  get; set; }

@@ -8,6 +8,7 @@ namespace NORTWND.Core.Abstractions.Repositories
 {
     public interface IRepositoryManager
     {
+        public ICustomerRepository Customers { get; }
         void Save();
         Task SaveAsync();
     }

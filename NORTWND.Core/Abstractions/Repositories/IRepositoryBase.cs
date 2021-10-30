@@ -11,8 +11,9 @@ namespace NORTWND.Core.Abstractions.Repositories
         void Remove(T entity);
         T Add(T entity);
         void Update(T entity);
-        Task<T> GetAsync(int id);
+        Task<T> GetAsync(string id);
         Task<IEnumerable<T>> GetAll();
+
         void SaveChanges();
         Task SaveChangesAsync();
         IEnumerable<T> GetWhere(Func<T, bool> predicate);

@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace NORTWND.DAL.BigOperations
 {
-    public class BigCustomers : ICustomersBL
+    public class BigCustomers 
     {
         NORTHWNDContext _db = new NORTHWNDContext();
-        public async Task<IEnumerable<CustomersViewModel>> OrderByRegion()
+        public async Task<IEnumerable<CustomerViewModel>> OrderByRegion()
         {
             var response = await _db.Customers
                 .OrderBy(o => o.Region == null ? 1 : 0).ToListAsync();
 
-            return response.Select(x => new CustomersViewModel
+            return response.Select(x => new CustomerViewModel
             {
                 CustomerId = x.CustomerId,
                 CompanyName = x.CompanyName,
+                ContactName = x.ContactName,
                 Country = x.Country,
                 City = x.City,
                 Region = x.Region,
@@ -29,24 +30,22 @@ namespace NORTWND.DAL.BigOperations
 
         }
 
-        public async Task<IEnumerable<CustomersViewModel>> TotalCustomers()
+        public async Task<IEnumerable<TotalCustomersViewModel>> TotalCustomers()
         {
             var response = await _db.Customers
                 .GroupBy(x => new { x.Country, x.City })
-                .Select(x => new CustomersViewModel
+                .Select(x => new TotalCustomersViewModel
                 {
                     Country = x.Key.Country,
                     City = x.Key.City,
                     Customers = x.Select(x => x.CustomerId).Count()
                 }).OrderByDescending(x => x.Customers).ToListAsync();
 
-            return response.Select(x => new CustomersViewModel
+            return response.Select(x => new TotalCustomersViewModel
             {
-                CustomerId = x.CustomerId,
-                CompanyName = x.CompanyName,
+                
                 Country = x.Country,
                 City = x.City,
-                Region = x.Region,
                 Customers = x.Customers
             });
         }
