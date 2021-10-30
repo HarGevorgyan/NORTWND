@@ -37,7 +37,6 @@ namespace NORTWND.DAL
         public virtual DbSet<OrderSubtotal> OrderSubtotals { get; set; }
         public virtual DbSet<OrdersQry> OrdersQries { get; set; }
 
-        public virtual DbSet<OrdersAvg> OrdersAvg { get; set; }      
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSalesFor1997> ProductSalesFor1997s { get; set; }
         public virtual DbSet<ProductsAboveAveragePrice> ProductsAboveAveragePrices { get; set; }
