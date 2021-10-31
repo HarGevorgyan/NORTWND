@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using NORTWND.API.Middlewares;
 using NORTWND.BLL.Operations;
 using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
@@ -39,6 +40,11 @@ namespace NORTWND.API
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<IAuthBL,AuthBL>();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options => {
+                options.Events.OnRedirectToLogin = (context) => { context.Response.StatusCode = 401; return Task.CompletedTask; };
+                options.Events.OnRedirectToAccessDenied = (context) => { context.Response.StatusCode = 403; return Task.CompletedTask; };
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -46,17 +52,14 @@ namespace NORTWND.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NORTWND", Version = "v1" });
             });
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => {
-                    options.Events.OnRedirectToLogin = (context) => { context.Response.StatusCode = 401; return Task.CompletedTask; };
-                    options.Events.OnRedirectToLogout = (context) => { context.Response.StatusCode = 401; return Task.CompletedTask; };
-                    options.Events.OnRedirectToAccessDenied = (context) => { context.Response.StatusCode = 403; return Task.CompletedTask; };
-                });
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -64,11 +67,15 @@ namespace NORTWND.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NORTWND v1"));
             }
 
+            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

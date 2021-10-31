@@ -12,8 +12,10 @@ namespace NORTWND.Core.Abstractions.Repositories
     {
         Task LoginAsync(LoginModel login, HttpContext context);
         Task LogoutAsync(HttpContext context);
-
         Task<UserViewModel> RegisterAsync(RegisterModel register);
+
+        Task<UserViewModel> EditUserAsync(UserEditModel model);
+        Task RolesChangeAsync(RolesChangeModel model);
 
 
     }

@@ -28,6 +28,7 @@ namespace NORTWND.API.Middlewares
             }
             catch(LogicException logicException)
             {
+
                 _logger.LogError(logicException, logicException.Message);
                 var message = logicException?.InnerException?.Message ?? logicException.Message;
                 await WriteExceptionResponseAsync(context, message, logicException.StatusCode);

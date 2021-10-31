@@ -1,4 +1,5 @@
-﻿using NORTWND.Core.Abstractions.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
 using NORTWND.Core.Exceptions;
 using NORTWND.Core.Models;
@@ -20,6 +21,7 @@ namespace NORTWND.BLL.Operations
         public CustomersBL(IRepositoryManager repositories)
         {
             _repositories = repositories;
+           
         }
 
         public async Task<CustomerViewModel> AddCustomerAsync(CustomerAddModel model)

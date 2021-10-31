@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NORTWND.API.Entities;
 using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Models;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NORTWND.API.Controllers
-{ 
+{
     public class CustomersController : ControllerBase
     {
         ICustomersBL _customers;
