@@ -9,7 +9,6 @@ using Microsoft.OpenApi.Models;
 using NORTWND.API.Middlewares;
 using NORTWND.BLL.Operations;
 using NORTWND.Core.Abstractions.Repositories;
-using NORTWND.Core.Entities;
 using NORTWND.DAL;
 using NORTWND.DAL.Repositories;
 using System.Threading.Tasks;
@@ -65,6 +64,7 @@ namespace NORTWND.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NORTWND v1"));
+                
             }
 
             

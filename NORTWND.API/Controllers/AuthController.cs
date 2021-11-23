@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Models;
 using Serilog;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace NORTWND.API.Controllers

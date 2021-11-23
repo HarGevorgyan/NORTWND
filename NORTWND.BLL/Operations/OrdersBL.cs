@@ -3,7 +3,6 @@ using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.DAL.BigOperations;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NORTWND.Core.Entities;
 using NORTWND.Core.Models;
 
 namespace NORTWND.BLL.Operations

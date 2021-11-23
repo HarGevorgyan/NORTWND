@@ -9,7 +9,6 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using NORTWND.Core.Enums;
 using Microsoft.Extensions.Logging;

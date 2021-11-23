@@ -2,10 +2,8 @@
 using NORTWND.Core.Abstractions.Repositories;
 using NORTWND.Core.Entities;
 using NORTWND.Core.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NORTWND.DAL.Repositories

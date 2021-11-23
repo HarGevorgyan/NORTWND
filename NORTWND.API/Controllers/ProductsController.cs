@@ -1,18 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NORTWND.API.Entities;
 using NORTWND.Core.Abstractions.Repositories;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NORTWND.Controllers
 {
-   [ApiController]
+    [ApiController]
     [Route("[controller]")]
     public class ProductsController:ControllerBase
     {
-        IProductsBL _products;
-        //NORTHWNDContext _db;
+        readonly IProductsBL _products;
 
        public ProductsController(IProductsBL products) { _products = products; }
 

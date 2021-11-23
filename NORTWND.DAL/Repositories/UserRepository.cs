@@ -5,9 +5,7 @@ namespace NORTWND.DAL.Repositories
 {
     public class UserRepository:RepositoryBase<User>,IUserRepository
     {
-        private NORTHWNDContext context;
-
-        public UserRepository(NORTHWNDContext context) : base(context) { }
+         public UserRepository(NORTHWNDContext context) : base(context) { }
         
     }
 }

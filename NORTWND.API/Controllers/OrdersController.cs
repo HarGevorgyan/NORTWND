@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NORTWND.Core.Abstractions.Repositories;
-using NORTWND.Core.Entities;
 using System.Threading.Tasks;
 
 namespace NORTWND.API.Controllers
@@ -9,7 +8,7 @@ namespace NORTWND.API.Controllers
     [Route("[controller]")]
     public class OrdersController:ControllerBase
     {
-        IOrdersBL _orders;
+        readonly IOrdersBL _orders;
 
         public OrdersController(IOrdersBL orders)
         {
@@ -27,7 +26,7 @@ namespace NORTWND.API.Controllers
         [HttpGet("avg_freight_1998")]//26
       public async Task<IActionResult> AvgFreight98Async()
         {
-            var response = _orders.AvgFreight98();
+            var response = await _orders.AvgFreight98();
 
             return (response != null) ? Ok(response) : NoContent();
         }
